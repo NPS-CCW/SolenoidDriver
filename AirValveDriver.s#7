@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="7.0.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -45,6 +45,7 @@
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
@@ -5833,6 +5834,45 @@ http://www.st.com&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="DAZL_r1">
+<packages>
+<package name="PKG_CAP1">
+<pad name="POS" x="0" y="1.27" drill="0.79375" shape="long"/>
+<pad name="NEG" x="0" y="-1.27" drill="0.79375" shape="long"/>
+<wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.127" layer="21"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-2.54" x2="-2.54" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="2.54" width="0.127" layer="21"/>
+<text x="-2.54" y="1.27" size="1.27" layer="21">+</text>
+</package>
+</packages>
+<symbols>
+<symbol name="CAP_R1">
+<pin name="C+" x="0" y="2.54" length="middle" rot="R270"/>
+<pin name="C-" x="0" y="-10.16" length="middle" rot="R90"/>
+<wire x1="-2.54" y1="-7.62" x2="2.54" y2="-7.62" width="0.254" layer="94" curve="-180"/>
+<wire x1="-2.54" y1="-2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="CAP_R1">
+<gates>
+<gate name="G$1" symbol="CAP_R1" x="0" y="5.08"/>
+</gates>
+<devices>
+<device name="" package="PKG_CAP1">
+<connects>
+<connect gate="G$1" pin="C+" pad="POS"/>
+<connect gate="G$1" pin="C-" pad="NEG"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -5877,7 +5917,7 @@ http://www.st.com&lt;p&gt;
 <part name="U$3" library="myLibrary" deviceset="TB2" device="" value="switch"/>
 <part name="U$1" library="myLibrary" deviceset="OUTPUT_1" device=""/>
 <part name="U$4" library="myLibrary" deviceset="OUTPUT_1" device=""/>
-<part name="C4" library="resistor" deviceset="C-US" device="025-030X050" value="10u"/>
+<part name="U$5" library="DAZL_r1" deviceset="CAP_R1" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5918,7 +5958,7 @@ http://www.st.com&lt;p&gt;
 <instance part="U$3" gate="G$1" x="33.02" y="50.8" rot="R180"/>
 <instance part="U$1" gate="G$1" x="160.02" y="83.82"/>
 <instance part="U$4" gate="G$1" x="172.72" y="132.08" rot="R180"/>
-<instance part="C4" gate="G$1" x="96.52" y="147.32"/>
+<instance part="U$5" gate="G$1" x="101.6" y="147.32"/>
 </instances>
 <busses>
 </busses>
@@ -5954,9 +5994,11 @@ http://www.st.com&lt;p&gt;
 <pinref part="IC1" gate="A" pin="GND"/>
 <pinref part="AGND9" gate="VR1" pin="AGND"/>
 <wire x1="81.28" y1="147.32" x2="81.28" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="C4" gate="G$1" pin="2"/>
+<pinref part="U$5" gate="G$1" pin="C-"/>
 <wire x1="81.28" y1="142.24" x2="81.28" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="142.24" x2="81.28" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="137.16" x2="88.9" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="137.16" x2="88.9" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="142.24" x2="81.28" y2="142.24" width="0.1524" layer="91"/>
 <junction x="81.28" y="142.24"/>
 </segment>
 <segment>
@@ -5999,12 +6041,12 @@ http://www.st.com&lt;p&gt;
 <net name="+5V" class="0">
 <segment>
 <pinref part="IC1" gate="A" pin="OUT"/>
-<wire x1="88.9" y1="154.94" x2="96.52" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="96.52" y1="154.94" x2="106.68" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="C4" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="149.86" x2="96.52" y2="154.94" width="0.1524" layer="91"/>
-<junction x="96.52" y="154.94"/>
+<wire x1="88.9" y1="154.94" x2="101.6" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="C+"/>
+<wire x1="101.6" y1="154.94" x2="106.68" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="149.86" x2="101.6" y2="154.94" width="0.1524" layer="91"/>
+<junction x="101.6" y="154.94"/>
 </segment>
 <segment>
 <pinref part="P+2" gate="1" pin="+5V"/>
