@@ -1,0 +1,36 @@
+( 3 - 08/10/2014 / ISO-Mill.0 Output ) 
+( C:\Users\localadmin\Documents\eagle\SolenoidDriver\58_drill.txt created 09/11/2014 at 19:37 ) 
+( Workpiece dimensions: 72.502 x 62.672 x 1.5 mm ) 
+G00 G90 G94 G40 G54 G80 
+T4 M06 ( #58 Wire Gauge Drill ) 
+M03 S15000 
+M07 
+G00 F600.0 Z8.1 
+G00 F600.0 X43.07 Y28.16 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z8.1 
+G00 F600.0 X45.61 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z8.1 
+G00 F600.0 X48.15 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z8.1 
+G00 F600.0 X29.1 Y18.0 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z8.1 
+G00 F600.0 Y15.46 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z8.1 
+G00 F600.0 Y12.92 
+G00 Z2.1 
+G01 F60.0 Z-2.5 
+G00 F600.0 Z20.1 
+M09 
+M05 
+M02 
+% 
